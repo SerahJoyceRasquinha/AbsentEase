@@ -1,36 +1,34 @@
-AbsentEase is a web-based platform for streamlining OD (On-Duty) request management between students, teachers, and academic managers. The system facilitates seamless submission, verification, and tracking of OD requests while allowing class teachers to maintain and access timetables and attendance data efficiently.
+# AbsentEase
+
+AbsentEase is a web-based platform for streamlining On-Duty (OD) request management among students, teachers, and academic managers. It facilitates seamless submission, verification, and tracking of OD requests while enabling class teachers to maintain timetables and attendance data efficiently.
 
 🔧 Technologies Used
-PHP
+1)PHP
+2)MySQL
+3)HTML/CSS/JavaScript
+4)XAMPP (for local server setup)
 
-MySQL
+🚀 Getting Started:
 
-HTML/CSS/JavaScript
+1️⃣ Install XAMPP
+XAMPP is required to run the application locally. You can download it from the link below:
+👉 Download XAMPP on : https://www.apachefriends.org/download.html
 
-XAMPP (for local server setup)
+2️⃣ Clone the Repository
+Open your terminal and run:
 
-🚀 Getting Started
-1. Install XAMPP
-XAMPP is required to run the application locally. You can download it using the link below:
-
-👉 Download XAMPP
-
-2. Clone the Repository
-bash
-Copy
-Edit
-git clone https://github.com/your-username/absentease.git
+```
+bash $ git clone https://github.com/your-username/absentease.git
 cd absentease
-3. Setup the Database
-Import the following SQL queries into phpMyAdmin (typically found at http://localhost/phpmyadmin) to create the necessary tables.
+```
+3️⃣ Setup the Database
+Open phpMyAdmin (http://localhost/phpmyadmin) and run the following SQL scripts to create the required tables.
 
 🗄️ SQL Table Setup
-Click the dropdown arrow to expand the SQL code for each table.
+Click on each dropdown to reveal the SQL code. You can copy the code directly and execute it in your MySQL environment.
 
-<details> <summary><strong>📁 class_teacher_details</strong></summary>
-sql
-Copy
-Edit
+1) class_teacher_details
+```
 CREATE TABLE class_teacher_details (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     teacher_username VARCHAR(100) NOT NULL,
@@ -39,10 +37,10 @@ CREATE TABLE class_teacher_details (
     timetable TEXT NOT NULL,
     submission_date TIMESTAMP NOT NULL DEFAULT current_timestamp()
 );
-</details> <details> <summary><strong>📁 od_requests</strong></summary>
-sql
-Copy
-Edit
+```
+2) od_requests
+
+```
 CREATE TABLE od_requests (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     student_rollno VARCHAR(20),
@@ -56,10 +54,11 @@ CREATE TABLE od_requests (
     class_teacher_username VARCHAR(255),
     link TEXT
 );
-</details> <details> <summary><strong>📁 student_credentials</strong></summary>
-sql
-Copy
-Edit
+```
+
+3) student_credentials
+
+```
 CREATE TABLE student_credentials (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     rollno VARCHAR(50) NOT NULL,
@@ -68,10 +67,13 @@ CREATE TABLE student_credentials (
     INDEX (rollno),
     INDEX (email)
 );
-</details> <details> <summary><strong>📁 teacher_credentials</strong></summary>
-sql
-Copy
-Edit
+
+```
+
+
+4) teacher_credentials
+
+```
 CREATE TABLE teacher_credentials (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
@@ -79,10 +81,11 @@ CREATE TABLE teacher_credentials (
     password VARCHAR(255) NOT NULL,
     INDEX (email)
 );
-</details> <details> <summary><strong>📁 verifiable_student_details</strong></summary>
-sql
-Copy
-Edit
+
+```
+5) verifiable_student_details
+
+```
 CREATE TABLE verifiable_student_details (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     student_rollno VARCHAR(20) NOT NULL,
@@ -95,22 +98,26 @@ CREATE TABLE verifiable_student_details (
     class_teacher_username VARCHAR(255),
     INDEX (student_rollno)
 );
-</details> <details> <summary><strong>📁 verifiable_teacher_details</strong></summary>
-sql
-Copy
-Edit
+
+```
+
+
+6) verifiable_teacher_details
+
+```
 CREATE TABLE verifiable_teacher_details (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL,
     INDEX (username)
 );
-</details> <details> <summary><strong>📁 manager_credentials (One-Time Setup)</strong></summary>
-sql
-Copy
-Edit
+```
+
+7) manager_credentials (One-Time Setup)
+
+```
 CREATE TABLE manager_credentials (
     email VARCHAR(255) NOT NULL,
     password VARBINARY(255) NOT NULL
 );
-</details>
+```
