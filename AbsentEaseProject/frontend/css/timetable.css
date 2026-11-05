@@ -1,0 +1,81 @@
+/* =====================================================================
+   timetable.css - the hour grids
+     .hour-grid   student "Request OD" (dates x hours) and teacher "My Class" (weekdays x hours)
+     .legend      colour key under a grid
+   ===================================================================== */
+
+.hour-grid-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); transition: box-shadow 0.2s; }
+.hour-grid-wrap.has-error { box-shadow: 0 0 0 3px rgba(194, 49, 47, 0.25); border-color: var(--danger); }
+.hour-grid-empty { padding: 36px 20px; text-align: center; color: var(--text-faint); background: var(--surface-alt); }
+
+.hour-grid { width: 100%; border-collapse: collapse; min-width: 560px; }
+
+.hour-grid th, .hour-grid td {
+    padding: 6px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.hour-grid thead th {
+    background: var(--surface-alt);
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--text-muted);
+    padding: 9px 6px;
+}
+
+.hour-grid tbody tr:last-child th,
+.hour-grid tbody tr:last-child td { border-bottom: none; }
+
+.hour-grid__day {
+    text-align: left !important;
+    padding-left: 14px !important;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 13.5px;
+    width: 130px;
+    background: var(--surface);
+}
+
+.hour-grid__day.is-clickable { cursor: pointer; }
+.hour-grid__day.is-clickable:hover { color: var(--primary); }
+
+.hour-grid__lunch {
+    width: 46px;
+    background: repeating-linear-gradient(135deg, #f3f4f7, #f3f4f7 6px, #eceef3 6px, #eceef3 12px) !important;
+    font-size: 11px !important;
+    color: var(--text-faint) !important;
+}
+
+.hour-grid__note { color: var(--text-faint); font-style: italic; }
+
+.slot {
+    display: inline-grid;
+    place-items: center;
+    width: 38px;
+    height: 34px;
+    border-radius: 7px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13.5px;
+    border: 1px solid transparent;
+}
+
+button.slot { cursor: pointer; transition: all 0.12s; }
+.slot--free  { background: var(--surface); border-color: var(--border-strong); color: var(--text); }
+.slot--free:hover { border-color: var(--primary); color: var(--primary); }
+.slot--free.is-on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.slot--off   { color: #c4cad6; }
+.slot--taken { background: var(--warning-soft); color: var(--warning); border-color: #f6dfb4; text-decoration: line-through; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--text-muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend__box { width: 14px; height: 14px; border-radius: 4px; display: inline-block; border: 1px solid var(--border-strong); }
+.legend__box--free  { background: var(--surface); }
+.legend__box--on    { background: var(--primary); border-color: var(--primary); }
+.legend__box--taken { background: var(--warning-soft); border-color: #f6dfb4; }
+.legend__box--off   { background: #f3f4f7; }
+
+.sticky-side { position: sticky; top: 82px; }
+
+@media (max-width: 960px) { .sticky-side { position: static; } }

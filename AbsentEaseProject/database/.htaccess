@@ -1,0 +1,2 @@
+# Not reachable from the browser: PHP includes these files directly.
+Require all denied
